@@ -1,6 +1,7 @@
 import React from "react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import Link from "next/link";
 
 interface Pokemon {
   entry_number: number;
@@ -36,7 +37,11 @@ const Home = ({ pokemons }: PokemonStaticProps) => {
       {pokemons && (
         <ul>
           {pokemons.map((pokemon) => (
-            <li key={pokemon.entry_number}>{pokemon.pokemon_species.name}</li>
+            <li key={pokemon.entry_number}>
+              <Link href={`pokemon/${pokemon.entry_number}`}>
+                <a>{pokemon.pokemon_species.name}</a>
+              </Link>
+            </li>
           ))}
         </ul>
       )}
