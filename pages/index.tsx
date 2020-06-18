@@ -1,5 +1,6 @@
 import React from "react";
 import { GetStaticProps } from "next";
+import Head from "next/head";
 
 interface Pokemon {
   entry_number: number;
@@ -29,6 +30,9 @@ export const getStaticProps: GetStaticProps = async (_) => {
 const Home = ({ pokemons }: PokemonStaticProps) => {
   return (
     <>
+      <Head>
+        <title>Pokénext</title>
+      </Head>
       {pokemons && (
         <ul>
           {pokemons.map((pokemon) => (
