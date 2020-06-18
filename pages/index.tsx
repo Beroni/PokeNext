@@ -3,6 +3,8 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 
+import { Container, Card } from "./styles";
+
 interface Pokemon {
   entry_number: number;
   pokemon_species: {
@@ -34,17 +36,19 @@ const Home = ({ pokemons }: PokemonStaticProps) => {
       <Head>
         <title>Pokénext</title>
       </Head>
-      {pokemons && (
-        <ul>
-          {pokemons.map((pokemon) => (
-            <li key={pokemon.entry_number}>
-              <Link href={`pokemon/${pokemon.entry_number}`}>
-                <a>{pokemon.pokemon_species.name}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <Container>
+        {pokemons && (
+          <ul>
+            {pokemons.map((pokemon) => (
+              <Card key={pokemon.entry_number}>
+                <Link href={`pokemon/${pokemon.entry_number}`}>
+                  <a>{pokemon.pokemon_species.name}</a>
+                </Link>
+              </Card>
+            ))}
+          </ul>
+        )}
+      </Container>
     </>
   );
 };
