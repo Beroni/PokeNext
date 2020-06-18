@@ -1,6 +1,7 @@
 import React from "react";
-
+import { Container } from "./styles";
 import { GetStaticProps, GetStaticPaths } from "next";
+import Link from "next/link";
 
 interface Pokemon {
   name: string;
@@ -70,11 +71,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const Pokemon = ({ pokemon }: PokemonStaticProps) => {
   return (
-    <>
+    <Container>
       <h1>{pokemon.name}</h1>
       <h2>Número : {pokemon.id}</h2>
       <img src={pokemon.img} alt="Pokemon"></img>
-    </>
+      <Link href="/">
+        <a>Voltar</a>
+      </Link>
+    </Container>
   );
 };
 
